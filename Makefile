@@ -15,6 +15,8 @@
 # /__________)                                        (__________\ 
 
 
+#export LIBGL_ALWAYS_SOFTWARE=1
+
 NAME = ticTacToe
 SRCS_D = .
 INC_D = inc
