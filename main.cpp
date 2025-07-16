@@ -3,7 +3,7 @@
 /*  File:       main.cpp                                       /\_/\            */
 /*  Author:     Daniela Padilha                               ( o.o )           */
 /*  Created:    2025/07/13 01:26:43                            > ^ <            */
-/*  Updated:    2025/07/15 15:22:28                                             */
+/*  Updated:    2025/07/16 15:44:10                                             */
 /*                                                                              */
 /* ******************************************************************************/
 
@@ -19,6 +19,10 @@ int main(void)
         {' ', ' ', ' '}
     };
     char currentPlayer = 'X';
+    char winner = ' ';
+    bool gameOver = false;
+    std::vector<std::pair<int, int>> winCells;
+
     while (window->isOpen())
     {
         sf::Event event;
@@ -29,14 +33,20 @@ int main(void)
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
                 window->close();
             else
-                handleMouseClick(event, board, currentPlayer);
+                handleMouseClick(event, board, currentPlayer, gameOver, winner, winCells);
         }
-
         window->clear(sf::Color::Black);
         drawGrid(*window);
         drawBoard(*window, board);
+        if (winner != ' ')
+        {
+            drawWinningLine(*window, winCells);
+            drawWinnerMessage(*window, winner);
+        }
+        drawRestartButton(*window);
         window->display();
     }
-    delete (window);
-    return (0);
+    delete window;
+    return 0;
 }
+

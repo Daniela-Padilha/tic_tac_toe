@@ -25,6 +25,7 @@ INC_D = inc
 SRC = $(SRCS_D)/window.cpp \
 		$(SRCS_D)/events.cpp \
 		$(SRCS_D)/symbols.cpp \
+		$(SRCS_D)/win.cpp \
 		$(SRCS_D)/main.cpp \
 
 #include files
